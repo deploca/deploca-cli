@@ -1,12 +1,17 @@
 {
-  "name": "deploca-cli",
+  "name": "@deploca/cli",
   "description": "Command-line tool for deploca cloud services",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.2",
   "license": "MIT",
   "author": "deploca",
-  "repository": "deploca/deploca-cli",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deploca/deploca-cli.git"
+  },
   "homepage": "https://github.com/deploca/deploca-cli",
-  "bugs": "https://github.com/deploca/deploca-cli/issues",
+  "bugs": {
+    "url": "https://github.com/deploca/deploca-cli/issues"
+  },
   "keywords": [
     "deploca",
     "command-line-tool"
@@ -66,5 +71,8 @@
       "@oclif/plugin-help"
     ]
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "directories": {
+    "test": "test"
+  }
 }
