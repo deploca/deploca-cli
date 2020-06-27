@@ -1,7 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import * as yaml from 'js-yaml'
-import axios from 'axios'
+import api from '../api'
+import Utilities from './utilities'
 
 export default class Package {
     source: string;
@@ -23,14 +24,30 @@ export default class Package {
         })
     }
 
-    async deploy(branch:string) : Promise<boolean> {
+    async deploy(target:string) : Promise<any> {
         return new Promise<boolean>(async (resolve, reject) => {
+            let compressed_file = ''
             try {
+                console.log(`starting to deploy to the '${target}'`);
+                // validation
+                console.log(`validating the package manifest file ...`);
                 await this.validate();
-                console.log(`starting to deploy to the branch: ${branch}`);
-                resolve(true)
+                // compress source directory
+                console.log(`compressing the source directory ...`);
+                compressed_file = await Utilities.compress(this.source)
+                // upload the file
+                console.log(`uploading the package file ...`);
+                const uploaded_filename = await Utilities.uploadAttachment(compressed_file)
+                // push to the branch
+                console.log(`deploying to the target ...`);
+                const params = { target, contentsFileName: uploaded_filename }
+                api.post('/projects/branches/contents', params).then(r => {
+                    return resolve(r.data)
+                }).catch(e => { throw e })
             } catch (error) {
                 return reject(error)
+            } finally {
+                Utilities.deleteFile(compressed_file)
             }
         })
     }
