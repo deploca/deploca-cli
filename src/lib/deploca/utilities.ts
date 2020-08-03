@@ -26,7 +26,6 @@ export default class Utilities {
         return new Promise((resolve, reject) => {
             var saveFilename = crypto.randomBytes(6).readUIntLE(0,6).toString(36) + '.zip'
             saveFilename = path.join(os.tmpdir(), saveFilename)
-            console.log('temp file: ', saveFilename)
             try {
                 zipper.sync.zip(source).compress().save(saveFilename);
                 return resolve(saveFilename)

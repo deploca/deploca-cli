@@ -28,6 +28,7 @@ export default class Package {
         return new Promise<boolean>(async (resolve, reject) => {
             let compressed_file = ''
             try {
+                console.log('for testing...');
                 console.log(`starting to deploy to the '${target}'`);
                 // validation
                 console.log(`validating the package manifest file ...`);
@@ -35,9 +36,11 @@ export default class Package {
                 // compress source directory
                 console.log(`compressing the source directory ...`);
                 compressed_file = await Utilities.compress(this.source)
+                console.log('package file: ', compressed_file)
                 // upload the file
                 console.log(`uploading the package file ...`);
                 const uploaded_filename = await Utilities.uploadAttachment(compressed_file)
+                console.log(`uploaded with file name: ${uploaded_filename}`);
                 // push to the branch
                 console.log(`deploying to the target ...`);
                 const params = { target, contentsFileName: uploaded_filename }
