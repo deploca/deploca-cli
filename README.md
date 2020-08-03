@@ -1,5 +1,6 @@
 deploca-cli
 ===========
+![Node.js Package](https://github.com/deploca/deploca-cli/workflows/Node.js%20Package/badge.svg)
 
 Command-line tool for deploca cloud services
 
