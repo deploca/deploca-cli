@@ -15,6 +15,18 @@ $ npm install -g @deploca/cli
 $ deploca COMMAND
 running command...
 $ deploca (-v|--version|version)
+@deploca/cli/0.0.1-alpha.3 win32-x64 node-v10.16.0
+$ deploca --help [COMMAND]
+USAGE
+  $ deploca COMMAND
+...
+```
+<!-- usagestop -->
+```sh-session
+$ npm install -g @deploca/cli
+$ deploca COMMAND
+running command...
+$ deploca (-v|--version|version)
 @deploca/cli/0.0.1-alpha.2 win32-x64 node-v10.16.0
 $ deploca --help [COMMAND]
 USAGE
@@ -24,30 +36,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`deploca hello [FILE]`](#deploca-hello-file)
 * [`deploca help [COMMAND]`](#deploca-help-command)
-* [`deploca package:deploy [FILE]`](#deploca-packagedeploy-file)
-* [`deploca package:validate [FILE]`](#deploca-packagevalidate-file)
-
-## `deploca hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ deploca hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ deploca hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src\commands\hello.ts](https://github.com/deploca/deploca-cli/blob/v0.0.1-alpha.2/src\commands\hello.ts)_
+* [`deploca package:deploy`](#deploca-packagedeploy-file)
+* [`deploca package:validate`](#deploca-packagevalidate-file)
 
 ## `deploca help [COMMAND]`
 
@@ -66,13 +57,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src\commands\help.ts)_
 
-## `deploca package:deploy [FILE]`
+## `deploca package:deploy`
 
 deploys the package to the cloud
 
 ```
 USAGE
-  $ deploca package:deploy [FILE]
+  $ deploca package:deploy
 
 OPTIONS
   -h, --help           show CLI help
@@ -85,15 +76,15 @@ EXAMPLES
   $ deploca package:deploy --path|-p /path/to/package/dir
 ```
 
-_See code: [src\commands\package\deploy.ts](https://github.com/deploca/deploca-cli/blob/v0.0.1-alpha.2/src\commands\package\deploy.ts)_
+_See code: [src\commands\package\deploy.ts](https://github.com/deploca/deploca-cli/blob/v0.0.1-alpha.3/src\commands\package\deploy.ts)_
 
-## `deploca package:validate [FILE]`
+## `deploca package:validate`
 
 validate the package to check its ok to deploy
 
 ```
 USAGE
-  $ deploca package:validate [FILE]
+  $ deploca package:validate
 
 OPTIONS
   -h, --help       show CLI help
@@ -103,5 +94,5 @@ EXAMPLE
   $ deploca package:validate
 ```
 
-_See code: [src\commands\package\validate.ts](https://github.com/deploca/deploca-cli/blob/v0.0.1-alpha.2/src\commands\package\validate.ts)_
+_See code: [src\commands\package\validate.ts](https://github.com/deploca/deploca-cli/blob/v0.0.1-alpha.3/src\commands\package\validate.ts)_
 <!-- commandsstop -->

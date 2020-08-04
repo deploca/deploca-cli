@@ -36,7 +36,6 @@ export default class Package {
                 // compress source directory
                 console.log(`compressing the source directory ...`);
                 compressed_file = await Utilities.compress(this.source)
-                console.log('package file: ', compressed_file)
                 // upload the file
                 console.log(`uploading the package file ...`);
                 const uploaded_filename = await Utilities.uploadAttachment(compressed_file)

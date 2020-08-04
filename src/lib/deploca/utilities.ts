@@ -10,6 +10,11 @@ export default class Utilities {
 
     static async uploadAttachment(file:string) : Promise<string> {
         return new Promise((resolve, reject) => {
+            // log file info
+            var fileStat = fs.statSync(file)
+            var fileSize = this.getFriendlyFileSize(fileStat.size)
+            console.log(`uploading file: ${file} (${fileSize})`)
+            // upload
             const fd = new FormData();
             fd.append('file', fs.createReadStream(file));
             var headers = { 
@@ -52,6 +57,12 @@ export default class Utilities {
 
     static deleteFile(file:string) {
         fs.unlinkSync(file)
+    }
+
+    static getFriendlyFileSize(lengthInBytes:number) {
+        if (!lengthInBytes || lengthInBytes == 0) return '0 B'
+        var i = Math.floor(Math.log(lengthInBytes) / Math.log(1024));
+        return (lengthInBytes / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
     }
 
 }
