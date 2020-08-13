@@ -24,7 +24,7 @@ export default class Package {
         })
     }
 
-    async deploy(target:string) : Promise<any> {
+    async deploy(target:string, token:string) : Promise<any> {
         return new Promise<boolean>(async (resolve, reject) => {
             let compressed_file = ''
             try {
@@ -42,10 +42,9 @@ export default class Package {
                 console.log(`uploaded with file name: ${uploaded_filename}`);
                 // push to the branch
                 console.log(`deploying to the target ...`);
-                const params = { target, contentsFileName: uploaded_filename }
-                api.post('/projects/branches/contents', params).then(r => {
-                    return resolve(r.data)
-                }).catch(e => { throw e })
+                const params = { token, target, contentsFileName: uploaded_filename }
+                const postContentsResult = await api.post('/projects/branches/contents', params)
+                return resolve(postContentsResult.data)
             } catch (error) {
                 return reject(error)
             } finally {
