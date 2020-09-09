@@ -24,24 +24,24 @@ export default class Package {
         })
     }
 
-    async deploy(target:string, token:string) : Promise<any> {
+    async deploy(target:string, token:string, enableValidation:boolean = true) : Promise<any> {
         return new Promise<boolean>(async (resolve, reject) => {
             let compressed_file = ''
             try {
-                console.log('for testing...');
-                console.log(`starting to deploy to the '${target}'`);
                 // validation
-                console.log(`validating the package manifest file ...`);
-                await this.validate();
+                if (enableValidation) {
+                    console.log(`validating the package manifest file ...`);
+                    await this.validate();
+                }
                 // compress source directory
                 console.log(`compressing the source directory ...`);
                 compressed_file = await Utilities.compress(this.source)
                 // upload the file
                 console.log(`uploading the package file ...`);
                 const uploaded_filename = await Utilities.uploadAttachment(compressed_file)
-                console.log(`uploaded with file name: ${uploaded_filename}`);
+                //console.log(`uploaded with file name: ${uploaded_filename}`);
                 // push to the branch
-                console.log(`deploying to the target ...`);
+                console.log(`deploying to: '${target}'`);
                 const params = { token, target, contentsFileName: uploaded_filename }
                 const postContentsResult = await api.post('/projects/branches/contents', params)
                 return resolve(postContentsResult.data)
