@@ -15,7 +15,7 @@ $ npm install -g @deploca/cli
 $ deploca COMMAND
 running command...
 $ deploca (-v|--version|version)
-@deploca/cli/0.0.1-alpha.4 win32-x64 node-v10.16.0
+@deploca/cli/0.0.1-alpha.5 win32-x64 node-v10.16.0
 $ deploca --help [COMMAND]
 USAGE
   $ deploca COMMAND
@@ -24,26 +24,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`deploca help [COMMAND]`](#deploca-help-command)
 * [`deploca package:deploy`](#deploca-packagedeploy-file)
 * [`deploca package:validate`](#deploca-packagevalidate-file)
-
-## `deploca help [COMMAND]`
-
-display help for deploca
-
-```
-USAGE
-  $ deploca help [COMMAND]
-
-ARGUMENTS
-  COMMAND  command to show help for
-
-OPTIONS
-  --all  see all commands in CLI
-```
-
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.1.0/src\commands\help.ts)_
 
 ## `deploca package:deploy`
 
